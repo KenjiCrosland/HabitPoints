@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Habit Points!-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="HabitPoints" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,8 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoa-Kk-ste">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Point Goal: 5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kD5-2X-sCG">
+                                        <rect key="frame" x="218" y="19" width="164" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="kD5-2X-sCG" secondAttribute="centerY" id="Eho-0d-YHZ"/>
+                                    <constraint firstAttribute="centerX" secondItem="kD5-2X-sCG" secondAttribute="centerX" id="GRx-Bb-a3d"/>
+                                    <constraint firstAttribute="height" constant="60" id="JEO-uz-pNc"/>
+                                    <constraint firstAttribute="centerX" secondItem="kD5-2X-sCG" secondAttribute="centerX" id="hcS-jU-jJZ"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PUj-2e-vuj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="132" width="600" height="468"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="58" id="UoN-3t-OIY" customClass="HabitCell" customModule="HabitPoints" customModuleProvider="target">
@@ -74,14 +92,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PUj-2e-vuj" firstAttribute="top" secondItem="eoa-Kk-ste" secondAttribute="bottom" constant="8" id="9Uo-sa-6EF"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="PUj-2e-vuj" secondAttribute="bottom" id="Plw-NG-yE2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PUj-2e-vuj" secondAttribute="trailing" constant="-16" id="avD-3N-iyB"/>
                             <constraint firstItem="PUj-2e-vuj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="iPu-Hr-ddy"/>
-                            <constraint firstItem="PUj-2e-vuj" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="rSb-tu-POd"/>
+                            <constraint firstItem="eoa-Kk-ste" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="loT-rU-hJF"/>
+                            <constraint firstItem="eoa-Kk-ste" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="q9S-Px-7WY"/>
+                            <constraint firstItem="PUj-2e-vuj" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="132" id="rSb-tu-POd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eoa-Kk-ste" secondAttribute="trailing" constant="-16" id="zdf-Br-4Zv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rSb-tu-POd"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="cP9-rS-FkO"/>
+                    <navigationItem key="navigationItem" title="Habit Points!" id="cP9-rS-FkO"/>
                     <connections>
+                        <outlet property="pointGoalLabel" destination="kD5-2X-sCG" id="wsA-dV-wJ1"/>
                         <outlet property="tableView" destination="PUj-2e-vuj" id="n7R-m3-CxX"/>
                     </connections>
                 </viewController>

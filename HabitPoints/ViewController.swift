@@ -12,7 +12,12 @@ class ViewController: UIViewController,  UITableViewDataSource {
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var pointGoalLabel: UILabel!
+  
   var habits = [Habit]()
+  
+  let user = User(usersTotalPoints: 0, usersPointGoal: 10)
+  
   let drinkWater = Habit(habitName: "Drink a Glass of Water", habitPointValue: 1, habitBonusFrequency: (5, "Daily"))
   let floss = Habit(habitName: "Floss your teeth", habitPointValue: 2, habitBonusFrequency: (7, "Weekly"))
   
@@ -22,8 +27,7 @@ class ViewController: UIViewController,  UITableViewDataSource {
     tableView.dataSource = self
     habits.append(drinkWater)
     habits.append(floss)
-    
-    
+    pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
     
     // Do any additional setup after loading the view, typically from a nib.
   }

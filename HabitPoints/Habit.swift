@@ -11,7 +11,7 @@ import UIKit
 class Habit: NSObject {
   var name: String
   var pointValue: Int
-  var bonusFrequency: (Int, String)
+  var bonusFrequency: (number:Int, interval:String)
   
   init(habitName: String, habitPointValue: Int, habitBonusFrequency: (Int, String)) {
     name = habitName
