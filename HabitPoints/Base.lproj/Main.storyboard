@@ -35,11 +35,11 @@
                                     <constraint firstAttribute="centerX" secondItem="kD5-2X-sCG" secondAttribute="centerX" id="hcS-jU-jJZ"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PUj-2e-vuj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PUj-2e-vuj">
                                 <rect key="frame" x="0.0" y="132" width="600" height="468"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="58" id="UoN-3t-OIY" customClass="HabitCell" customModule="HabitPoints" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="101" id="UoN-3t-OIY" customClass="HabitCell" customModule="HabitPoints" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UoN-3t-OIY" id="DKu-xw-iMk">
@@ -69,6 +69,13 @@
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yI-2H-MIx">
+                                                    <rect key="frame" x="8" y="47" width="45" height="45"/>
+                                                    <state key="normal" image="button_not_selected.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted" image="button_highlighted.png"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="K5E-Hz-WYA" firstAttribute="top" secondItem="dzr-eo-cMA" secondAttribute="bottom" constant="3" id="2vj-h3-rht"/>
@@ -82,6 +89,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="button1" destination="9yI-2H-MIx" id="IiA-aj-sgj"/>
                                             <outlet property="habitBonusGoalLabel" destination="iGD-3J-yDD" id="T7m-VS-28W"/>
                                             <outlet property="habitPointValueLabel" destination="K5E-Hz-WYA" id="SMV-SX-xJ4"/>
                                             <outlet property="habitTitleLabel" destination="dzr-eo-cMA" id="rUd-Ul-v8N"/>
@@ -136,4 +144,8 @@
             <point key="canvasLocation" x="315" y="1086"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_highlighted.png" width="45" height="45"/>
+        <image name="button_not_selected.png" width="45" height="45"/>
+    </resources>
 </document>

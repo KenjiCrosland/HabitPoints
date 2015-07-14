@@ -14,6 +14,13 @@ class ViewController: UIViewController,  UITableViewDataSource {
   
   @IBOutlet weak var pointGoalLabel: UILabel!
   
+  //This is fired off by the button in UITabelViewCell
+  @IBAction func actionCompleted(sender:UIButton){
+    let habit = habits[sender.tag]
+    pointGoalLabel.text = habit.name
+    sender.setImage(UIImage(named: "button_selected"), forState: UIControlState.Normal)
+  }
+  
   var habits = [Habit]()
   
   let user = User(usersTotalPoints: 0, usersPointGoal: 10)
@@ -51,6 +58,10 @@ class ViewController: UIViewController,  UITableViewDataSource {
       pointValueString = "\(habitToDisplay.pointValue) Points"
     }
     
+    
+    //Created a initial test button to see if I can get a button within UITableViewCell to Work Properly
+    cell.button1.tag = indexPath.row
+    cell.button1.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)
     
     cell.habitTitleLabel.text = habitToDisplay.name
     cell.habitBonusGoalLabel.text = habitBonusString

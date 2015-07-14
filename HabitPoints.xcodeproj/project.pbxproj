@@ -16,6 +16,9 @@
 		4FD1EB3E1B487B2100BAAA33 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1EB3D1B487B2100BAAA33 /* Habit.swift */; };
 		4FD1EB401B4B8C0D00BAAA33 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1EB3F1B4B8C0D00BAAA33 /* HabitCell.swift */; };
 		4FD1EB421B509F9000BAAA33 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1EB411B509F9000BAAA33 /* User.swift */; };
+		4FD1EB461B54AF0A00BAAA33 /* button_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1EB431B54AF0A00BAAA33 /* button_highlighted.png */; };
+		4FD1EB471B54AF0A00BAAA33 /* button_not_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1EB441B54AF0A00BAAA33 /* button_not_selected.png */; };
+		4FD1EB481B54AF0A00BAAA33 /* button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1EB451B54AF0A00BAAA33 /* button_selected.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		4FD1EB3D1B487B2100BAAA33 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		4FD1EB3F1B4B8C0D00BAAA33 /* HabitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
 		4FD1EB411B509F9000BAAA33 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4FD1EB431B54AF0A00BAAA33 /* button_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_highlighted.png; path = Images.xcassets/button_highlighted.png; sourceTree = "<group>"; };
+		4FD1EB441B54AF0A00BAAA33 /* button_not_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_not_selected.png; path = Images.xcassets/button_not_selected.png; sourceTree = "<group>"; };
+		4FD1EB451B54AF0A00BAAA33 /* button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_selected.png; path = Images.xcassets/button_selected.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 		4FD1EB181B487AA700BAAA33 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4FD1EB431B54AF0A00BAAA33 /* button_highlighted.png */,
+				4FD1EB441B54AF0A00BAAA33 /* button_not_selected.png */,
+				4FD1EB451B54AF0A00BAAA33 /* button_selected.png */,
 				4FD1EB191B487AA700BAAA33 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -225,7 +234,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD1EB481B54AF0A00BAAA33 /* button_selected.png in Resources */,
 				4FD1EB201B487AA700BAAA33 /* Main.storyboard in Resources */,
+				4FD1EB461B54AF0A00BAAA33 /* button_highlighted.png in Resources */,
+				4FD1EB471B54AF0A00BAAA33 /* button_not_selected.png in Resources */,
 				4FD1EB251B487AA700BAAA33 /* LaunchScreen.xib in Resources */,
 				4FD1EB221B487AA700BAAA33 /* Images.xcassets in Resources */,
 			);

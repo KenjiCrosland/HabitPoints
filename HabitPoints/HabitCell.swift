@@ -16,6 +16,8 @@ class HabitCell: UITableViewCell {
   
   @IBOutlet weak var habitPointValueLabel: UILabel!
   
+  @IBOutlet weak var button1: UIButton!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
