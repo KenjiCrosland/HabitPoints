@@ -10,11 +10,11 @@ import UIKit
 
 class CheckCircle: UIButton {
   
-  var isChecked : Bool
+  var isChecked : Bool = false
+  var circleNumber : Int = 0
 
-  required init(coder aDecoder: NSCoder) {
-    isChecked = false
+ /* required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-  }
+  }*/
 
 }

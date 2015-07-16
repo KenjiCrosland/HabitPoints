@@ -66,10 +66,22 @@ class ViewController: UIViewController,  UITableViewDataSource {
       pointValueString = "\(habitToDisplay.pointValue) Points"
     }
     
+    var buttonXCoordinateNumber: CGFloat = 4
+    
+    for var i = 0; i < habitToDisplay.bonusFrequency.number; i++ {
+      var pointButton = CheckCircle()
+      pointButton.frame = CGRectMake(buttonXCoordinateNumber, 50, 41, 41)
+      pointButton.tag = indexPath.row
+      pointButton.circleNumber = i
+      pointButton.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
+      pointButton.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)
+      cell.addSubview(pointButton)
+      buttonXCoordinateNumber += 44
+    }
     
     //Created a initial test button to see if I can get a button within UITableViewCell to Work Properly
-    cell.button1.tag = indexPath.row
-    cell.button1.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)
+   /* cell.button1.tag = indexPath.row
+    cell.button1.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)*/
     
     cell.habitTitleLabel.text = habitToDisplay.name
     cell.habitBonusGoalLabel.text = habitBonusString
