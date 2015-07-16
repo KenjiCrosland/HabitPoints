@@ -15,10 +15,18 @@ class ViewController: UIViewController,  UITableViewDataSource {
   @IBOutlet weak var pointGoalLabel: UILabel!
   
   //This is fired off by the button in UITabelViewCell
-  @IBAction func actionCompleted(sender:UIButton){
+  @IBAction func actionCompleted(sender:CheckCircle){
     let habit = habits[sender.tag]
-    pointGoalLabel.text = habit.name
-    sender.setImage(UIImage(named: "button_selected"), forState: UIControlState.Normal)
+    if sender.isChecked == false {
+      sender.isChecked = true
+      sender.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
+      user.pointGoal -= habit.pointValue
+    } else if sender.isChecked == true {
+      sender.isChecked = false
+      sender.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
+      user.pointGoal += habit.pointValue
+    }
+    pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
   }
   
   var habits = [Habit]()

@@ -16,7 +16,7 @@ class HabitCell: UITableViewCell {
   
   @IBOutlet weak var habitPointValueLabel: UILabel!
   
-  @IBOutlet weak var button1: UIButton!
+  @IBOutlet weak var button1: CheckCircle!
   
     override func awakeFromNib() {
         super.awakeFromNib()

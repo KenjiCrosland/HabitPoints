@@ -69,12 +69,12 @@
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yI-2H-MIx">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yI-2H-MIx" customClass="CheckCircle" customModule="HabitPoints" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="47" width="45" height="45"/>
-                                                    <state key="normal" image="button_not_selected.png">
+                                                    <state key="normal" image="gray-circle-outline.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="highlighted" image="button_highlighted.png"/>
+                                                    <state key="highlighted" image="gray-solid-circle.png"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -145,7 +145,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button_highlighted.png" width="45" height="45"/>
-        <image name="button_not_selected.png" width="45" height="45"/>
+        <image name="gray-circle-outline.png" width="45" height="45"/>
+        <image name="gray-solid-circle.png" width="45" height="45"/>
     </resources>
 </document>
