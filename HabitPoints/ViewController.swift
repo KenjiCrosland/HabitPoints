@@ -20,11 +20,11 @@ class ViewController: UIViewController,  UITableViewDataSource {
     if sender.isChecked == false {
       sender.isChecked = true
       sender.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
-      user.pointGoal -= habit.pointValue
+      adjustPointValue(user, habit: habit, subtracting: true)
     } else if sender.isChecked == true {
       sender.isChecked = false
       sender.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
-      user.pointGoal += habit.pointValue
+      adjustPointValue(user, habit: habit, subtracting: false)
     }
     pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
   }
@@ -56,16 +56,6 @@ class ViewController: UIViewController,  UITableViewDataSource {
     
     let habitToDisplay = habits[indexPath.row]
     
-    //String Operations For the Labels in the HabitCell
-    let habitBonusString = "\(habitToDisplay.bonusFrequency.0)" + "x " + "\(habitToDisplay.bonusFrequency.1)"
-    var pointValueString = ""
-    if habitToDisplay.pointValue == 1 {
-      pointValueString = "1 Point"
-    } else
-    {
-      pointValueString = "\(habitToDisplay.pointValue) Points"
-    }
-    
     var buttonXCoordinateNumber: CGFloat = 4
     
     for var i = 0; i < habitToDisplay.bonusFrequency.number; i++ {
@@ -84,10 +74,35 @@ class ViewController: UIViewController,  UITableViewDataSource {
     cell.button1.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)*/
     
     cell.habitTitleLabel.text = habitToDisplay.name
-    cell.habitBonusGoalLabel.text = habitBonusString
-    cell.habitPointValueLabel.text = pointValueString
+    cell.habitBonusGoalLabel.text = habitToDisplay.bonusFrequencyString
+    cell.habitPointValueLabel.text = habitToDisplay.pointValueString
     
     return cell
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowHabitDetailViewController" {
+      if let detailViewController = segue.destinationViewController as? HabitDetailViewController,
+      selectedIndexPathRow = tableView.indexPathForSelectedRow()?.row
+      {
+        var selectedHabit = habits[selectedIndexPathRow]
+        detailViewController.selectedHabit = selectedHabit
+      }
+    }
+  }
+  
+  func adjustPointValue(user: User, habit:Habit, subtracting: Bool) {
+    if subtracting == true {
+      user.pointGoal -= habit.pointValue
+    } else if subtracting == false {
+      user.pointGoal += habit.pointValue
+    }
+    if user.pointGoal == 0 {
+      if let goalCompletedView = self.storyboard!.instantiateViewControllerWithIdentifier("goalCompletedViewController") as? goalCompletedViewController{
+        presentViewController(goalCompletedView, animated: true, completion: nil)
+      }
+
+    }
   }
 }
 
