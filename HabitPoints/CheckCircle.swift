@@ -12,6 +12,7 @@ class CheckCircle: UIButton {
   
   var isChecked : Bool = false
   var circleNumber : Int = 0
+  var row : Int = 0
 
  /* required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)

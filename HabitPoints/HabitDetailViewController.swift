@@ -18,13 +18,14 @@ class HabitDetailViewController: UIViewController {
   @IBAction func actionCompleted(sender:CheckCircle){
     let habit = selectedHabit
     let circle = sender
-    if sender.isChecked == false {
+    if habit.goalArray[sender.circleNumber] == false {
       sender.isChecked = true
       sender.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
       habit.goalArray[sender.circleNumber] = true
       adjustPointValue(user, habit: habit, subtracting: true)
-    } else if sender.isChecked == true {
+    } else if habit.goalArray[sender.circleNumber] == true {
       sender.isChecked = false
+   
       sender.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
       habit.goalArray[sender.circleNumber] = false
       adjustPointValue(user, habit: habit, subtracting: false)
@@ -44,7 +45,7 @@ class HabitDetailViewController: UIViewController {
       pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
     
  
-      makeRowOfCheckCircles(self.view, selectedHabit: selectedHabit, yCoordinate: 190)
+      makeRowOfCheckCircles(self.view, selectedHabit: selectedHabit, yCoordinate: 190, indexPathRow: nil)
       
   //    CheckCircle.makeRowOfCheckCircles(self, selectedHabit: selectedHabit, yCoordinate: detailYCoordinate)
 /*

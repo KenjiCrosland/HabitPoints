@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0668381B81322A008FE7CC /* green-check-circle-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0668371B81322A008FE7CC /* green-check-circle-small.png */; };
+		4F06683A1B813232008FE7CC /* gray-circle-outline-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0668391B813232008FE7CC /* gray-circle-outline-small.png */; };
+		4F06683C1B813568008FE7CC /* SmallCheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F06683B1B813568008FE7CC /* SmallCheckCircle.swift */; };
 		4F1F65D71B58543C00DB1202 /* CheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F65D61B58543C00DB1202 /* CheckCircle.swift */; };
 		4FCCB2171B76A5A500058A51 /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCB2161B76A5A500058A51 /* HabitDetailViewController.swift */; };
 		4FD1EB1B1B487AA700BAAA33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1EB1A1B487AA700BAAA33 /* AppDelegate.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F0668371B81322A008FE7CC /* green-check-circle-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "green-check-circle-small.png"; path = "Images.xcassets/green-check-circle-small.png"; sourceTree = "<group>"; };
+		4F0668391B813232008FE7CC /* gray-circle-outline-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gray-circle-outline-small.png"; path = "Images.xcassets/gray-circle-outline-small.png"; sourceTree = "<group>"; };
+		4F06683B1B813568008FE7CC /* SmallCheckCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallCheckCircle.swift; sourceTree = "<group>"; };
 		4F1F65D61B58543C00DB1202 /* CheckCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCircle.swift; sourceTree = "<group>"; };
 		4FCCB2161B76A5A500058A51 /* HabitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
 		4FD1EB151B487AA700BAAA33 /* HabitPoints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitPoints.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +118,8 @@
 				4FD1EB431B54AF0A00BAAA33 /* gray-solid-circle.png */,
 				4FD1EB441B54AF0A00BAAA33 /* gray-circle-outline.png */,
 				4FD1EB451B54AF0A00BAAA33 /* green-check-circle.png */,
+				4F0668371B81322A008FE7CC /* green-check-circle-small.png */,
+				4F0668391B813232008FE7CC /* gray-circle-outline-small.png */,
 				4FD1EB191B487AA700BAAA33 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -140,6 +148,7 @@
 				4FD1EB1E1B487AA700BAAA33 /* Main.storyboard */,
 				4FD1EB3F1B4B8C0D00BAAA33 /* HabitCell.swift */,
 				4F1F65D61B58543C00DB1202 /* CheckCircle.swift */,
+				4F06683B1B813568008FE7CC /* SmallCheckCircle.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -248,6 +257,8 @@
 				4FD1EB461B54AF0A00BAAA33 /* gray-solid-circle.png in Resources */,
 				4FD1EB471B54AF0A00BAAA33 /* gray-circle-outline.png in Resources */,
 				4FD1EB251B487AA700BAAA33 /* LaunchScreen.xib in Resources */,
+				4F06683A1B813232008FE7CC /* gray-circle-outline-small.png in Resources */,
+				4F0668381B81322A008FE7CC /* green-check-circle-small.png in Resources */,
 				4FD1EB221B487AA700BAAA33 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +285,7 @@
 				4FD1EB421B509F9000BAAA33 /* User.swift in Sources */,
 				4FDCAD121B59F479005E959E /* goalCompletedViewController.swift in Sources */,
 				4FD1EB1B1B487AA700BAAA33 /* AppDelegate.swift in Sources */,
+				4F06683C1B813568008FE7CC /* SmallCheckCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

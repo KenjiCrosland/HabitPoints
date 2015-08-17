@@ -9,22 +9,33 @@
 import UIKit
 
 extension UIViewController {
-  func makeRowOfCheckCircles(currentView:UIView, selectedHabit: Habit, yCoordinate: CGFloat){
+  func makeRowOfCheckCircles(currentView:UIView, selectedHabit: Habit, yCoordinate: CGFloat, indexPathRow: Int?){
     var xCoordinate: CGFloat = 4
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
+    let screenWidth = screenSize.width
+    var containerWidth: CGFloat = (4 + 44 * CGFloat(selectedHabit.goalArray.count))
+    let startingWidth = (screenWidth - containerWidth)/2
+    var containerView = UIView(frame: (CGRectMake(startingWidth, yCoordinate, containerWidth, 50)))
+    currentView.addSubview(containerView)
+    
     for var i = 0; i < selectedHabit.bonusFrequency.number; i++ {
       var pointButton = CheckCircle()
-      pointButton.frame = CGRectMake(xCoordinate, yCoordinate, 41, 41)
-      //pointButton.tag = indexPath.row
+      pointButton.frame = CGRectMake(xCoordinate, 0, 41, 41)
+      if indexPathRow != nil{
+      pointButton.tag = indexPathRow!
+      }
       pointButton.circleNumber = i
       if selectedHabit.goalArray[i] == false {
+        pointButton.isChecked = false
         pointButton.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
       }
-      else
+      else if selectedHabit.goalArray[i] == true
       {
+        pointButton.isChecked = true
         pointButton.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
       }
       pointButton.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)
-      currentView.addSubview(pointButton)
+      containerView.addSubview(pointButton)
       xCoordinate += 44  }
   }
 }
@@ -38,16 +49,16 @@ class ViewController: UIViewController,  UITableViewDataSource {
   //This is fired off by the button in UITabelViewCell
   @IBAction func actionCompleted(sender:CheckCircle){
     let habit = habits[sender.tag]
-    if sender.isChecked == false {
+    if habit.goalArray[sender.circleNumber] == false {
       sender.isChecked = true
       sender.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
        habit.goalArray[sender.circleNumber] = true
       adjustPointValue(user, habit: habit, subtracting: true)
-    } else if sender.isChecked == true {
+    } else if habit.goalArray[sender.circleNumber] == true {
       sender.isChecked = false
       sender.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
       habit.goalArray[sender.circleNumber] = false
-      adjustPointValue(user, habit: habit, subtracting: false)
+      adjustPointValue(user, habit: habit, subtracting:false)
     }
     pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
   }
@@ -72,6 +83,7 @@ class ViewController: UIViewController,  UITableViewDataSource {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
     tableView.reloadData()
   }
   
@@ -83,36 +95,31 @@ class ViewController: UIViewController,  UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HabitCell
     
     let habitToDisplay = habits[indexPath.row]
-    makeRowOfCheckCircles(cell, selectedHabit: habitToDisplay, yCoordinate: 50)
-    /*
-    var buttonXCoordinateNumber: CGFloat = 4
     
+   // makeRowOfCheckCircles(cell, selectedHabit: habitToDisplay, yCoordinate: 50, indexPathRow: indexPath.row)
+    var xCoordinate: CGFloat = 14
+    var smallGrayCircleOutline = UIImage(named:"gray-circle-outline-small")
+    var smallGreenCircleOutline = UIImage(named:"green-check-circle-small")
+   
     for var i = 0; i < habitToDisplay.bonusFrequency.number; i++ {
-      var pointButton = CheckCircle()
-      pointButton.frame = CGRectMake(buttonXCoordinateNumber, 50, 41, 41)
-      pointButton.tag = indexPath.row
-      pointButton.circleNumber = i
+      var smallCheckCircleView = SmallCheckCircle(image: nil)
+      smallCheckCircleView.frame = CGRectMake(xCoordinate, 35, 7, 7)
+      smallCheckCircleView.tag = indexPath.row
+      smallCheckCircleView.circleNumber = i
       if habitToDisplay.goalArray[i] == false {
-        pointButton.setImage(UIImage(named: "gray-circle-outline"), forState: UIControlState.Normal)
+        smallCheckCircleView.isChecked = false
+        smallCheckCircleView.image = smallGrayCircleOutline
       }
-      else
+      else if habitToDisplay.goalArray[i] == true
       {
-        pointButton.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
+        smallCheckCircleView.isChecked = true
+        smallCheckCircleView.image = smallGreenCircleOutline
       }
-
-      pointButton.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)
-      cell.addSubview(pointButton)
-      buttonXCoordinateNumber += 44
-    }
-    */
-    //Created a initial test button to see if I can get a button within UITableViewCell to Work Properly
-   /* cell.button1.tag = indexPath.row
-    cell.button1.addTarget(self, action: "actionCompleted:", forControlEvents: .TouchUpInside)*/
-    
+      cell.addSubview(smallCheckCircleView)
+      xCoordinate += 8  }
     cell.habitTitleLabel.text = habitToDisplay.name
     cell.habitBonusGoalLabel.text = habitToDisplay.bonusFrequencyString
     cell.habitPointValueLabel.text = habitToDisplay.pointValueString
-    
     return cell
   }
   
