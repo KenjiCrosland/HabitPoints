@@ -108,7 +108,17 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Habit Points!" id="cP9-rS-FkO"/>
+                    <navigationItem key="navigationItem" title="Habit Points!" id="cP9-rS-FkO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="abk-rQ-XA6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="22q-u6-ezd">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add New Habit!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pointGoalLabel" destination="kD5-2X-sCG" id="wsA-dV-wJ1"/>
                         <outlet property="tableView" destination="PUj-2e-vuj" id="n7R-m3-CxX"/>

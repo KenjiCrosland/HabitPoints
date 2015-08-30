@@ -18,7 +18,6 @@ class HabitDetailViewController: UIViewController {
   
 
   @IBAction func goalActionCompleted(sender: UIButton) {
-    //TODO: add if let statement
     adjustCheckCircles(view)
   }
   
@@ -90,6 +89,8 @@ class HabitDetailViewController: UIViewController {
         selectedHabit.goalArray[i] = true
         circleArray[i].isChecked = true
         circleArray[i].setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
+        adjustPointValue(user, habit: selectedHabit, subtracting: true)
+        pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
         break}
     }
   }
@@ -102,7 +103,7 @@ class HabitDetailViewController: UIViewController {
       circleArray += getSubviewsOfView(subview)
       
       if let viewToAppend = subview as? CheckCircle {
-        circleArray.append(viewToAppend as CheckCircle)
+        circleArray.append(viewToAppend)
       }
     }
     
