@@ -11,6 +11,7 @@
 		4F06683A1B813232008FE7CC /* gray-circle-outline-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0668391B813232008FE7CC /* gray-circle-outline-small.png */; };
 		4F06683C1B813568008FE7CC /* SmallCheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F06683B1B813568008FE7CC /* SmallCheckCircle.swift */; };
 		4F1F65D71B58543C00DB1202 /* CheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F65D61B58543C00DB1202 /* CheckCircle.swift */; };
+		4FA4E48F1B9691EA001AF7AF /* NewHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA4E48E1B9691EA001AF7AF /* NewHabitViewController.swift */; };
 		4FCCB2171B76A5A500058A51 /* HabitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCCB2161B76A5A500058A51 /* HabitDetailViewController.swift */; };
 		4FD1EB1B1B487AA700BAAA33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1EB1A1B487AA700BAAA33 /* AppDelegate.swift */; };
 		4FD1EB1D1B487AA700BAAA33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1EB1C1B487AA700BAAA33 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		4F0668391B813232008FE7CC /* gray-circle-outline-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gray-circle-outline-small.png"; path = "Images.xcassets/gray-circle-outline-small.png"; sourceTree = "<group>"; };
 		4F06683B1B813568008FE7CC /* SmallCheckCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallCheckCircle.swift; sourceTree = "<group>"; };
 		4F1F65D61B58543C00DB1202 /* CheckCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCircle.swift; sourceTree = "<group>"; };
+		4FA4E48E1B9691EA001AF7AF /* NewHabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewHabitViewController.swift; sourceTree = "<group>"; };
 		4FCCB2161B76A5A500058A51 /* HabitDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitDetailViewController.swift; sourceTree = "<group>"; };
 		4FD1EB151B487AA700BAAA33 /* HabitPoints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitPoints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD1EB191B487AA700BAAA33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				4FD1EB1C1B487AA700BAAA33 /* ViewController.swift */,
 				4FDCAD111B59F479005E959E /* goalCompletedViewController.swift */,
 				4FCCB2161B76A5A500058A51 /* HabitDetailViewController.swift */,
+				4FA4E48E1B9691EA001AF7AF /* NewHabitViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				4FD1EB1D1B487AA700BAAA33 /* ViewController.swift in Sources */,
 				4F1F65D71B58543C00DB1202 /* CheckCircle.swift in Sources */,
 				4FD1EB401B4B8C0D00BAAA33 /* HabitCell.swift in Sources */,
+				4FA4E48F1B9691EA001AF7AF /* NewHabitViewController.swift in Sources */,
 				4FCCB2171B76A5A500058A51 /* HabitDetailViewController.swift in Sources */,
 				4FD1EB421B509F9000BAAA33 /* User.swift in Sources */,
 				4FDCAD121B59F479005E959E /* goalCompletedViewController.swift in Sources */,
