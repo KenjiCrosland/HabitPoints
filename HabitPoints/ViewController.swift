@@ -9,7 +9,9 @@
 import UIKit
 
 extension UIViewController {
+  
   func makeRowOfCheckCircles(currentView:UIView, selectedHabit: Habit, yCoordinate: CGFloat, indexPathRow: Int?){
+    //TODO Move this function into a separate file
     var xCoordinate: CGFloat = 4
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     let screenWidth = screenSize.width
@@ -18,11 +20,11 @@ extension UIViewController {
     var containerView = UIView(frame: (CGRectMake(startingWidth, yCoordinate, containerWidth, 50)))
     currentView.addSubview(containerView)
     
-    for var i = 0; i < selectedHabit.bonusFrequency.number; i++ {
+    for var i = 0; i < selectedHabit.bonusFrequencyNumber; i++ {
       var pointButton = CheckCircle()
       pointButton.frame = CGRectMake(xCoordinate, 0, 41, 41)
       if indexPathRow != nil{
-      pointButton.tag = indexPathRow!
+        pointButton.tag = indexPathRow!
       }
       pointButton.circleNumber = i
       if selectedHabit.goalArray[i] == false {
@@ -52,7 +54,7 @@ class ViewController: UIViewController,  UITableViewDataSource {
     if habit.goalArray[sender.circleNumber] == false {
       sender.isChecked = true
       sender.setImage(UIImage(named: "green-check-circle"), forState: UIControlState.Normal)
-       habit.goalArray[sender.circleNumber] = true
+      habit.goalArray[sender.circleNumber] = true
       adjustPointValue(user, habit: habit, subtracting: true)
     } else if habit.goalArray[sender.circleNumber] == true {
       sender.isChecked = false
@@ -67,15 +69,23 @@ class ViewController: UIViewController,  UITableViewDataSource {
   
   let user = User(usersTotalPoints: 0, usersPointGoal: 10)
   
-  let drinkWater = Habit(habitName: "Drink a Glass of Water", habitPointValue: 1, habitBonusFrequency: (5, "Daily"))
-  let floss = Habit(habitName: "Floss your teeth", habitPointValue: 2, habitBonusFrequency: (7, "Weekly"))
+  let drinkWater = Habit(habitName: "Drink a Glass of Water", habitPointValue: 1, habitBonusFrequencyNumber: 5, habitBonusFrequencyInterval: "Daily")
+  let floss = Habit(habitName: "Floss your teeth", habitPointValue: 2, habitBonusFrequencyNumber:7, habitBonusFrequencyInterval: "Weekly")
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.dataSource = self
-    habits.append(drinkWater)
-    habits.append(floss)
+    
+    //Load from NSKeyedArchiver
+    if let archivedHabitsArray = loadFromArchive()
+    {
+      habits = archivedHabitsArray
+    }
+    else {
+      //If the archive returns nil, load from the plist and Save to the Archive
+      saveToArchive()
+    }
     pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -84,6 +94,7 @@ class ViewController: UIViewController,  UITableViewDataSource {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     pointGoalLabel.text = "Today's Point Goal: " + "\(user.pointGoal)"
+    saveToArchive()
     tableView.reloadData()
   }
   
@@ -96,12 +107,12 @@ class ViewController: UIViewController,  UITableViewDataSource {
     
     let habitToDisplay = habits[indexPath.row]
     
-   // makeRowOfCheckCircles(cell, selectedHabit: habitToDisplay, yCoordinate: 50, indexPathRow: indexPath.row)
+    // makeRowOfCheckCircles(cell, selectedHabit: habitToDisplay, yCoordinate: 50, indexPathRow: indexPath.row)
     var xCoordinate: CGFloat = 14
     var smallGrayCircleOutline = UIImage(named:"gray-circle-outline-small")
     var smallGreenCircleOutline = UIImage(named:"green-check-circle-small")
-   
-    for var i = 0; i < habitToDisplay.bonusFrequency.number; i++ {
+    
+    for var i = 0; i < habitToDisplay.bonusFrequencyNumber; i++ {
       var smallCheckCircleView = SmallCheckCircle(image: nil)
       smallCheckCircleView.frame = CGRectMake(xCoordinate, 35, 7, 7)
       smallCheckCircleView.tag = indexPath.row
@@ -126,7 +137,7 @@ class ViewController: UIViewController,  UITableViewDataSource {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "ShowHabitDetailViewController" {
       if let detailViewController = segue.destinationViewController as? HabitDetailViewController,
-      selectedIndexPathRow = tableView.indexPathForSelectedRow()?.row
+        selectedIndexPathRow = tableView.indexPathForSelectedRow()?.row
       {
         var selectedHabit = habits[selectedIndexPathRow]
         detailViewController.selectedHabit = selectedHabit
@@ -135,14 +146,12 @@ class ViewController: UIViewController,  UITableViewDataSource {
     }
     else if segue.identifier == "ShowNewHabitViewController" {
       if let newHabitViewController = segue.destinationViewController as? NewHabitViewController {
-        newHabitViewController.habits = habits
-        newHabitViewController.user = user
         newHabitViewController.tableViewController = self
         
       }
     }
   }
- 
+  
   
   func adjustPointValue(user: User, habit:Habit, subtracting: Bool) {
     if subtracting == true {
@@ -154,8 +163,29 @@ class ViewController: UIViewController,  UITableViewDataSource {
       if let goalCompletedView = self.storyboard!.instantiateViewControllerWithIdentifier("goalCompletedViewController") as? goalCompletedViewController{
         presentViewController(goalCompletedView, animated: true, completion: nil)
       }
-
+      
     }
   }
+  
+  //loadFromArchive and saveToArchive functions for persistence
+  func loadFromArchive() -> [Habit]? {
+    if let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as? String,
+      archivedPeopleArray = NSKeyedUnarchiver.unarchiveObjectWithFile(documentsPath + "/habitsarchive") as? [Habit]{
+        println("loadingfromarchive")
+        
+        return archivedPeopleArray
+        
+    }
+    return nil
+  }
+  
+  func saveToArchive() {
+    if let documentsPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as? String {
+      println("savingtoarchive")
+      NSKeyedArchiver.archiveRootObject(habits, toFile:documentsPath + "/habitsarchive")
+      
+    }
+  }
+  
 }
 
