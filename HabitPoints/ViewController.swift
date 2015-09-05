@@ -133,6 +133,14 @@ class ViewController: UIViewController,  UITableViewDataSource {
         detailViewController.user = user
       }
     }
+    else if segue.identifier == "ShowNewHabitViewController" {
+      if let newHabitViewController = segue.destinationViewController as? NewHabitViewController {
+        newHabitViewController.habits = habits
+        newHabitViewController.user = user
+        newHabitViewController.tableViewController = self
+        
+      }
+    }
   }
  
   

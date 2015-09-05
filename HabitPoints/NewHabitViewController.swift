@@ -9,18 +9,24 @@
 import UIKit
 
 class NewHabitViewController: UIViewController {
+  
+  var tableViewController: ViewController!
+  var habits: [Habit]!
+  var user: User!
 
   @IBOutlet weak var pointValueField: UITextField!
-  
   @IBOutlet weak var habitNameField: UITextField!
-  
   @IBOutlet weak var pointBonusFrequencyField: UITextField!
-  
-  @IBOutlet weak var pointBonusFrequencyUnitField: UISegmentedControl!
+  @IBOutlet weak var pointBonusFrequencyIntervalField: UISegmentedControl!
   
   @IBAction func addNewHabit(sender: AnyObject) {
-    //TODO: Create a new habit and append it to the existing array of habits
-    
+    if let pointValue = pointValueField.text.toInt() as Int!,
+    bonusFrequency = pointBonusFrequencyField.text.toInt() as Int!,
+    bonusFrequencyInterval = pointBonusFrequencyIntervalField.titleForSegmentAtIndex(pointBonusFrequencyIntervalField.selectedSegmentIndex) as String!
+    {
+    let newHabit = Habit(habitName: habitNameField.text, habitPointValue: pointValue, habitBonusFrequency: (bonusFrequency, bonusFrequencyInterval))
+    tableViewController.habits.append(newHabit)
+    }
   }
   
     override func viewDidLoad() {
@@ -28,21 +34,4 @@ class NewHabitViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
