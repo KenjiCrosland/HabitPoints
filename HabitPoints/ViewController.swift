@@ -134,6 +134,13 @@ class ViewController: UIViewController,  UITableViewDataSource {
     return cell
   }
   
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if editingStyle == UITableViewCellEditingStyle.Delete {
+      habits.removeAtIndex(indexPath.row)
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+  }
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "ShowHabitDetailViewController" {
       if let detailViewController = segue.destinationViewController as? HabitDetailViewController,

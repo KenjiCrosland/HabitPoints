@@ -8,19 +8,22 @@
 
 import UIKit
 
-class NewHabitViewController: UIViewController, UINavigationControllerDelegate {
+class NewHabitViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
   
   //TODO resign first responder stuff
   
   var tableViewController: ViewController!
 
-  @IBOutlet weak var pointValueField: UITextField!
+  @IBAction func pointValueStepper(sender: UIStepper) {
+    pointValueNumber.text = Int(sender.value).description
+  }
+  @IBOutlet weak var pointValueNumber: UILabel!
   @IBOutlet weak var habitNameField: UITextField!
   @IBOutlet weak var pointBonusFrequencyField: UITextField!
   @IBOutlet weak var pointBonusFrequencyIntervalField: UISegmentedControl!
   
   @IBAction func addNewHabit(sender: AnyObject) {
-    if let pointValue = pointValueField.text.toInt() as Int!,
+    if let pointValue = pointValueNumber.text?.toInt() as Int!,
     bonusFrequencyNumber = pointBonusFrequencyField.text.toInt() as Int!,
     bonusFrequencyInterval = pointBonusFrequencyIntervalField.titleForSegmentAtIndex(pointBonusFrequencyIntervalField.selectedSegmentIndex) as String!
     {
@@ -34,7 +37,20 @@ class NewHabitViewController: UIViewController, UINavigationControllerDelegate {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      habitNameField.delegate = self
+      pointBonusFrequencyField.delegate = self
+      var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+      view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+  
+  func dismissKeyboard() {
+    view.endEditing(true)
+  }
 }
